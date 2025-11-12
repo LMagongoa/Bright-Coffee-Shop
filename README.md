@@ -1,77 +1,104 @@
-# Bright-Coffee-Shop
-Comprehensive analysis of coffee shop sales utilizing Snowflake for data cleaning and exploratory data analysis (EDA), complemented by Power Bi for creating interactive data visualization dashboard.
+Coffee-Shop-Sales-Analytics
+# ☕ Coffee Shop Data Analytics Project
 
-Analytics project on sales data of a Coffee Shop. Tools used for analysis is MS Excel, SQL, Power Query and Python.
-📊 Bright Coffee Shop Sales Analysis (BRIGHTLIGHT) Purpose: Business Insights for a New CEO using Historical Transactional Data from Bright Coffee Shop Due Date: 11 May 2025, 23:59
-1.	INTRODUCTION & INSTRUCTIONS 1.1 INTRODUCTION You have been provided with a dataset titled “Bright Coffee Shop Sales”, which captures daily transactional information from a coffee shop. The business has recently appointed a new CEO whose mission is to grow the company’s revenue and improve product performance. Your role, as a Junior Data Analyst, is to extract actionable insights from historical data and prepare a presentation to assist the CEO in decision-making.
-2.	OBJECTIVE Use your analytics, SQL, and data visualization skills to help Bright Coffee Shop understand:
-• Which products generate the most revenue
-• What time of day the store performs best
-• Sales trends across products and time intervals
-• Recommendations for improving sales performance
-3.	TOOLS ALLOWED You may use any tool at your disposal, including but not limited to: Coding Platforms:
-• Microsoft SQL Server
-• Databricks
-• DBeaver
-• SQL Developer
-• Google BigQuery
-• MySQL Workbench
-Data Visualization:
-• Microsoft Excel
-• Power BI
-• Tableau
-• Google Sheets
-Presentation & Reporting:
-• Microsoft PowerPoint
-• Canva
-• Miro
-• Figma
-4.	TASKS
-Task 1: Planning & Architecture (Miro) Using Miro or any equivalent whiteboard tool:
-1.	Design a Data Flow & Architecture Diagram that outlines:
-• Where the data comes from (source)
-• How it is processed (ETL pipeline)
-• Where it is stored (Snowflake)
-• How it is analyzed and presented
-2.	List the Key Insights that the team should deliver, such as:
-• Sales by product category and time intervals
-• High-performing and low-performing products
-• Total revenue calculations
-2.	Outline the calculations to be performed:
-• Total Amount = unit_price * transaction_qty
-• Grouping by 30-minute time intervals
-• Total units sold by product type or detail
-You can add on the above, this is just to give you an idea of what is expected from the Miro planning.
-Task 2: Data Processing in Snowflake
-1.	Convert the provided Excel data to CSV.
-2.	Load the CSV into Snowflake
-3.	Perform data transformations:
-• Create a new column: transaction_time_bucket to group transactions into 30-minute intervals (Or it can be 1 hour intervals)
-• Cast unit_price properly (some entries use commas, e.g., '3,1' should be converted to 3.1)
-• Compute total_amount = unit_price * transaction_qty
-• Use SQL to group by product types, time buckets, etc.
-You can add on the above, this is just to give you an idea of what is expected from the Data Processing.
-Task 3: Data Analysis in Excel After processing the data in Snowflake:
-1.	Export the processed table to Microsoft Excel or your visualization tool
-2.	Create dashboards or pivot tables showing:
-• Total revenue per product type
-• Peak time intervals for sales
-• Quantity of items sold by product category
-• Best-selling product types or details
-• Use charts and graphs to make the story visually appealing
-Task 4: Presentation to the CEO Prepare a Presentation to deliver insights to the CEO. Include:
-1.	Overview of your approach – Create a separate document for your Methodology
-2.	Key insights from your analysis (backed by visuals) – Create a separate document for your Presentation
-3.	Recommendations:
-• Marketing campaigns during slow time slots
-• Stock more of the best-selling items
-• Promote underperforming products
-4.	Next Steps:
-• Automate daily sales reporting
-• Track sales performance across multiple locations in the future
-• Implement loyalty programs based on peak customer time slots
-6.	SUBMISSION GUIDELINES Submit the following items:
-• Miro Plan/Diagram
-• Processed Dataset on a Spreadsheet (Microsoft Excel or Google Sheets) with Pivot tables & Charts
-• PowerPoint Presentation
-• Text file with SQL code
+## 📊 Overview
+This project analyzes coffee shop sales data to uncover business insights and trends. The goal is to understand customer behavior, product performance, and seasonal sales patterns.  
+Using a modern data architecture, the data is extracted, transformed, and loaded (ETL) into **Snowflake**, analyzed using **SQL** and **Excel**, and visualized through **Power BI** dashboards.  
+
+---
+
+## 🧾 Dataset
+**File:** `Raw Dataset.csv`  
+**Description:** The dataset contains daily transaction-level records from a coffee shop, including:
+- `Transaction_ID`  
+- `Date` and `Time` of sale  
+- `Product` and `Category`  
+- `Quantity` and `Price`  
+- `Store_Location`  
+- `Total_Sales`
+
+---
+
+## 🧠 Objectives
+1. **Understand sales performance** across products, categories, and stores.  
+2. **Identify peak sales periods** by day, month, and year.  
+3. **Analyze customer purchasing behavior** and spending patterns.  
+4. **Build visual dashboards** to communicate key business insights.  
+5. **Implement a simple data pipeline** for scalable analytics in **Snowflake**.
+
+---
+
+## ⚙️ Data Architecture
+The following workflow was designed and planned in **Miro**:
+
+1. **Data Source:** Raw sales CSV file (coffee shop transactions).  
+2. **ETL Pipeline:**
+   - Data cleaning and transformation (remove nulls, standardize dates, etc.).
+   - Load processed data into **Snowflake**.
+3. **Storage:** Centralized data warehouse on Snowflake.  
+4. **Analytics:**
+   - SQL queries for metrics and KPI calculation.
+   - Aggregations by time, category, and location.
+5. **Visualization:**
+   - Power BI dashboards for management reporting.  
+   - Excel pivot analysis for exploratory review.  
+
+---
+
+## 🧩 Tools & Technologies
+| Tool | Purpose |
+|------|----------|
+| **Snowflake** | Cloud data warehousing and SQL analytics |
+| **SQL** | Data transformation, cleaning, and aggregation |
+| **Excel** | Exploratory analysis and pivot reporting |
+| **Power BI** | Interactive dashboards and data storytelling |
+| **Miro** | Data flow and architecture design |
+
+---
+
+## 🔍 Key Insights
+- ☕ **Top-selling products:** Identify which drinks or items generate the highest revenue.  
+- 📆 **Seasonal trends:** Detect months or days with peak sales.  
+- 📍 **Store comparison:** Evaluate performance across multiple locations.  
+- 💰 **Customer spending patterns:** Understand how quantity and price impact total sales.  
+
+---
+
+## 📈 Example Visuals
+Dashboards include:
+- **Sales Overview Dashboard** — total revenue, transactions.  
+- **Product Performance Dashboard** — top items by revenue and quantity.  
+- **Time Analysis Dashboard** — daily, weekly, and monthly sales trends.  
+
+
+---
+
+## 🧹 Data Cleaning Highlights
+Example SQL and transformation steps in **Snowflake**:
+```sql
+-- Remove null values
+SELECT * 
+FROM coffee_sales
+WHERE product IS NOT NULL;
+
+-- Convert date and time to proper timestamp
+SELECT TO_TIMESTAMP(sale_date, 'DY MON DD YYYY HH24:MI:SS GMTTZH:TZM') AS sale_timestamp
+FROM coffee_sales;
+
+-- Extract year, month, day for trend analysis
+SELECT 
+  EXTRACT(YEAR FROM sale_timestamp) AS year,
+  EXTRACT(MONTH FROM sale_timestamp) AS month,
+  EXTRACT(DAY FROM sale_timestamp) AS day
+FROM coffee_sales;
+
+🧮 Analytical Questions Explored
+What are the top-performing products by total sales?
+
+Which days and months generate the highest revenue?
+
+How do different store locations compare in performance?
+
+What are the average order values and customer purchase patterns?
+
+How can the coffee shop optimize inventory and staffing based on peak periods?
