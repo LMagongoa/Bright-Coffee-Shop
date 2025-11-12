@@ -1,5 +1,5 @@
 # Bright-Coffee-Shop
-Comprehensive analysis of coffee shop sales utilizing Snowflake for data cleaning and exploratory data analysis (EDA), complemented by Power Bifor creating interactive data visualization dashboard.
+Comprehensive analysis of coffee shop sales utilizing Snowflake for data cleaning and exploratory data analysis (EDA), complemented by Power Bi for creating interactive data visualization dashboard.
 
 Analytics project on sales data of a Coffee Shop. Tools used for analysis is MS Excel, SQL, Power Query and Python.
 📊 Bright Coffee Shop Sales Analysis (BRIGHTLIGHT) Purpose: Business Insights for a New CEO using Historical Transactional Data from Bright Coffee Shop Due Date: 11 May 2025, 23:59
