@@ -71,33 +71,6 @@ Dashboards include:
 - **Time Analysis Dashboard** — daily, weekly, and monthly sales trends.  
 
 
----
-
-## 🧹 Data Cleaning Highlights
-Example SQL and transformation steps in **Snowflake**:
-```sql
--- Remove null values
-SELECT * 
-FROM coffee_sales
-WHERE product IS NOT NULL;
-
--- Convert date and time to proper timestamp
-SELECT TO_TIMESTAMP(sale_date, 'DY MON DD YYYY HH24:MI:SS GMTTZH:TZM') AS sale_timestamp
-FROM coffee_sales;
-
--- Extract year, month, day for trend analysis
-SELECT 
-  EXTRACT(YEAR FROM sale_timestamp) AS year,
-  EXTRACT(MONTH FROM sale_timestamp) AS month,
-  EXTRACT(DAY FROM sale_timestamp) AS day
-FROM coffee_sales;
-
-🧮 Analytical Questions Explored
-What are the top-performing products by total sales?
-
-Which days and months generate the highest revenue?
-
-How do different store locations compare in performance?
 
 What are the average order values and customer purchase patterns?
 
